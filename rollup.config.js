@@ -36,7 +36,7 @@ export default {
       terser(),
       {
         writeBundle() {
-          fs.writeFileSync(path.join(outputPath, 'CNAME'), 'portals.gatunes.com');
+//          fs.writeFileSync(path.join(outputPath, 'CNAME'), 'portals.gatunes.com');
         },
       },
     ]),
