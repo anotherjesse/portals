@@ -6,6 +6,7 @@ import {
   sRGBEncoding,
   WebGLRenderer,
 } from 'three';
+import { VRButton } from 'three/examples/jsm/webxr/VRButton.js';
 
 class Renderer {
   constructor(dom) {
@@ -23,6 +24,7 @@ class Renderer {
       stencil: false,
       powerPreference: 'high-performance',
     });
+    this.renderer.xr.enabled = true
     this.renderer.outputEncoding = sRGBEncoding;
     this.renderer.toneMapping = ACESFilmicToneMapping;
     // this.renderer.setPixelRatio(window.devicePixelRatio || 1);
@@ -32,6 +34,8 @@ class Renderer {
     this.onFirstInteraction = this.onFirstInteraction.bind(this);
     window.addEventListener('click', this.onFirstInteraction, false);
     window.addEventListener('keydown', this.onFirstInteraction, false);
+
+    document.body.appendChild( VRButton.createButton( this.renderer ) );
 
     window.addEventListener('resize', this.onResize.bind(this), false);
     requestAnimationFrame(this.onResize.bind(this));
